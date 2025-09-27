@@ -27,7 +27,7 @@ function App() {
     <>
       <header className="App-header">
         <h1>Movie Explorer</h1>
-        <ThemeToggle />
+        <ThemeToggle id="theme-toggle" />
       </header>
       <BrowserRouter>
         <Routes>
