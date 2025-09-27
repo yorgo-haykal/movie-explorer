@@ -19,3 +19,16 @@
 .App-link {
   color: #61dafb;
 }
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
