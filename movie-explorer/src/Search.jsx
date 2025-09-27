@@ -9,7 +9,7 @@ function Search() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
 
-  async function handleSearch(query, type) {
+  async function handleSearch(query, type, year) {
     setStatus("loading");
     setError("");
 
@@ -18,6 +18,7 @@ function Search() {
       url.searchParams.set("apikey", import.meta.env.VITE_OMDB_API_KEY);
       url.searchParams.set("s", query);
       if (type) url.searchParams.set("type", type);
+      if (year) url.searchParams.set("y", year);
       
       const res = await fetch(url);
       const data = await res.json();
