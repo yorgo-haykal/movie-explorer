@@ -1,0 +1,19 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 10px;
+}
+
+.d {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-left: 20px;
+}

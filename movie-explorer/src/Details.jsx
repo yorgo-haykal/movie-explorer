@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./Details.css";
 
 function Details() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState();
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
-
-  
-
+ 
   async function fetchMovie(movieId) {
     setStatus("loading");
     setError("");
@@ -47,7 +47,35 @@ function Details() {
       {status === "loading" && <p>Loading…</p>}
       {status === "error" && <p style={{ color: "red" }}>{error}</p>}
       {status === "success" && (
-        <h1>{movie.Title}</h1>
+        <div className="details">
+          <Link to={"/"}>
+            Return
+          </Link>
+          <h1>{movie.Title} ({movie.Year})</h1>
+          <div className="d">
+            <img
+              src={movie.Poster !== "N/A" ? movie.Poster : placeholder}
+              alt={movie.Title}
+            />
+            <div className="infos">
+              <p>Rated {movie.Rated}</p>
+              <p>Genre: {movie.Genre}</p>
+              <p>Directed by {movie.Director}</p>
+              <p>Actors: {movie.Actors}</p>
+              <p>Box office: {movie.BoxOffice}</p>
+            </div>
+          </div>
+          <h3>Plot</h3>
+          <p>{movie.Plot}</p>
+          <p>Ratings: </p>
+          <ul>
+            {movie.Ratings.map((rating) => (
+              <li>
+                {rating.Source} : {rating.Value}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </>
   );
