@@ -2,7 +2,7 @@
 ## How to Run
 
 1. Clone the repository:  
-   `git clone https://github.com/<your-username>/movie-explorer.git && cd movie-explorer`
+   `git clone https://github.com/yorgo-haykal/movie-explorer.git && cd movie-explorer`
 
 2. Install dependencies:  
    `npm install`
