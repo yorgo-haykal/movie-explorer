@@ -1,8 +1,6 @@
 .App {
   min-height: 100vh;
   text-align: center;
-  background-color: black;
-  color: white;
 }
 
 .App-header {
@@ -16,9 +14,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 ul {
   list-style: none;
