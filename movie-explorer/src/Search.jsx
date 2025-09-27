@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import placeholder from "./assets/poster-placeholder.jpg"; 
@@ -9,16 +9,17 @@ function Search() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
 
-  async function handleSearch(query) {
+  async function handleSearch(query, type) {
     setStatus("loading");
     setError("");
 
     try {
-      const res = await fetch(
-        `https://www.omdbapi.com/?apikey=${
-          import.meta.env.VITE_OMDB_API_KEY
-        }&s=${encodeURIComponent(query)}`
-      );
+      const url = new URL("https://www.omdbapi.com/");
+      url.searchParams.set("apikey", import.meta.env.VITE_OMDB_API_KEY);
+      url.searchParams.set("s", query);
+      if (type) url.searchParams.set("type", type);
+      
+      const res = await fetch(url);
       const data = await res.json();
 
       if (data.Response === "False") {
@@ -37,9 +38,6 @@ function Search() {
 
   return (
     <div className="App">
-      <header className="App-header">
-      <h1>Movie Explorer</h1>
-      </header>
       <main>
         <SearchBar onSearch={handleSearch} />
 
